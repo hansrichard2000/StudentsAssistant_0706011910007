@@ -50,7 +50,7 @@ public class RegisterActivity extends AppCompatActivity implements TextWatcher {
     String action;
     Student student;
     Toolbar toolbar;
-    private DatabaseReference mDatabase;
+    DatabaseReference mDatabase, getmDatabase;
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
 
@@ -65,7 +65,8 @@ public class RegisterActivity extends AppCompatActivity implements TextWatcher {
         dialog = Glovar.loadingDialog(RegisterActivity.this);
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase = FirebaseDatabase.getInstance().getReference("student");
+        getmDatabase = FirebaseDatabase.getInstance().getReference();
 
         user_email = findViewById(R.id.user_email);
         user_pass = findViewById(R.id.user_pass);
@@ -160,7 +161,7 @@ public class RegisterActivity extends AppCompatActivity implements TextWatcher {
                     params.put("gender", gender);
                     params.put("address", address);
                     params.put("age", age);
-                    mDatabase.child("student").child(student.getUid()).updateChildren(params).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    getmDatabase.child("student").child(student.getUid()).updateChildren(params).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
                             dialog.cancel();
