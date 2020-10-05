@@ -19,6 +19,10 @@
     <string name="img">img</string>
     <string name="loading">loading. . .</string>
     <string name="student_data">Student Data</string>
+    <string name="schedule">Schedule</string>
+    <string name="course">Courses</string>
+    <string name="account">My Account</string>
+    <string name="logout">Log Out</string>
 
     <string-array name="days">
         <item>Monday</item>

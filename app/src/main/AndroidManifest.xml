@@ -9,8 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LecturerDetail"></activity>
-        <activity android:name=".adapter.LecturerAdapter" />
+<!--        <activity android:name=".fragment.FragmentAccountActivity"></activity>-->
+<!--        <activity android:name=".fragment.FragmentScheduleActivity" />-->
+<!--        <activity android:name=".fragment.FragmentCourseActivity" />-->
+        <activity android:name=".LecturerDetail" />
+<!--        <activity android:name=".adapter.LecturerAdapter" />-->
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,11 +24,11 @@
         <activity
             android:name=".StarterActivity"
             android:parentActivityName=".SplashScreen" />
+        <activity android:name=".MainActivity"/>
         <activity
             android:name=".LoginActivity"
             android:parentActivityName=".StarterActivity" />
-        <activity
-            android:name=".AddLectureActivity"/>
+        <activity android:name=".AddLectureActivity" />
         <activity
             android:name=".AddCourseActivity"
             android:parentActivityName=".StarterActivity" />
@@ -35,7 +38,9 @@
         <activity
             android:name=".RegisterActivity"
             android:launchMode="singleTop" />
-        <activity android:name=".StudentData" android:launchMode="singleTop"/>
+        <activity
+            android:name=".StudentData"
+            android:launchMode="singleTop" />
 
         <meta-data
             android:name="preloaded_fonts"
