@@ -32,6 +32,7 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.uc.studentsassistant_0706011910007.adapter.StudentAdapter;
 import com.uc.studentsassistant_0706011910007.model.Student;
 
 import java.util.HashMap;
@@ -64,7 +65,7 @@ public class RegisterActivity extends AppCompatActivity implements TextWatcher {
         dialog = Glovar.loadingDialog(RegisterActivity.this);
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
-        mDatabase = FirebaseDatabase.getInstance().getReference("student");
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 
         user_email = findViewById(R.id.user_email);
         user_pass = findViewById(R.id.user_pass);
@@ -118,12 +119,25 @@ public class RegisterActivity extends AppCompatActivity implements TextWatcher {
                 }
             });
         }else if(action.equalsIgnoreCase("edit")){
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(RegisterActivity.this, StudentAdapter.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(RegisterActivity.this);
+                    startActivity(intent, options.toBundle());
+                    finish();
+                }
+            });
+            user_age.getEditText().setText("");
             textView.setText("Edit");
             btn_register.setText("Edit Student");
             student = intent.getParcelableExtra("edit_student_data");
             user_name.getEditText().setText(student.getName());
             user_pass.getEditText().setText(student.getPassword());
+            user_pass.getEditText().setEnabled(false);
             user_email.getEditText().setText(student.getEmail());
+            user_email.getEditText().setEnabled(false);
             user_nim.getEditText().setText(student.getNim());
             user_address.getEditText().setText(student.getAddress());
             user_age.getEditText().setText(student.getAge());
@@ -136,20 +150,27 @@ public class RegisterActivity extends AppCompatActivity implements TextWatcher {
                 @Override
                 public void onClick(View view) {
                     dialog.show();
-                    email = user_email.getEditText().getText().toString().trim();
-                    pass = user_pass.getEditText().getText().toString().trim();
                     name = user_name.getEditText().getText().toString().trim();
                     nim = user_nim.getEditText().getText().toString().trim();
                     address = user_address.getEditText().getText().toString().trim();
                     age = user_age.getEditText().getText().toString().trim();
                     Map<String,Object> params = new HashMap<>();
-                    params.put("email", email);
-                    params.put("pass", pass);
                     params.put("name", name);
                     params.put("nim", nim);
+                    params.put("gender", gender);
                     params.put("address", address);
                     params.put("age", age);
-
+                    mDatabase.child("student").child(student.getUid()).updateChildren(params).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            dialog.cancel();
+                            Intent intent1 = new Intent(RegisterActivity.this, StudentData.class);
+                            intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(RegisterActivity.this);
+                            startActivity(intent1, options.toBundle());
+                            finish();
+                        }
+                    });
                 }
             });
         }

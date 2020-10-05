@@ -51,7 +51,7 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.CardView
         holder.nim.setText(student.getNim());
         holder.email.setText(student.getEmail());
         holder.gender.setText(student.getGender());
-        holder.age.setText(student.getAge());
+        holder.age.setText(" / "+student.getAge()+" yo");
         holder.address.setText(student.getAddress());
         holder.edit.setOnClickListener(new View.OnClickListener() {
             @Override
