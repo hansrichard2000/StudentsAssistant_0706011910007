@@ -1,0 +1,80 @@
+<resources>
+    <string name="app_name">Students Assistant</string>
+    <string name="splashtext">"Welcome to Student's Assistant!"
+        "Take notes, create reminder, get your college measured! We will help you feel more organized!"</string>
+    <string name="regsiter_page">Register</string>
+    <string name="student_assist">Students Assistant</string>
+    <string name="email">Email</string>
+    <string name="pass">Password</string>
+    <string name="fname">Full Name</string>
+    <string name="nim">Nim</string>
+    <string name="gender">Gender</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="age">Age</string>
+    <string name="address">Address</string>
+    <string name="login">Login</string>
+    <string name="expert">Expertise</string>
+    <string name="lecturer_data">Lecturer Data</string>
+    <string name="img">img</string>
+    <string name="loading">loading. . .</string>
+    <string name="student_data">Student Data</string>
+
+    <string-array name="days">
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
+    </string-array>
+
+    <string-array name="playtime">
+        <item>07:30:00</item>
+        <item>08:00:00</item>
+        <item>08:30:00</item>
+        <item>09:00:00</item>
+        <item>09:30:00</item>
+        <item>10:00:00</item>
+        <item>10:30:00</item>
+        <item>11:00:00</item>
+        <item>11:30:00</item>
+        <item>12:00:00</item>
+        <item>12:30:00</item>
+        <item>13:00:00</item>
+        <item>13:30:00</item>
+        <item>14:00:00</item>
+        <item>14:30:00</item>
+        <item>15:00:00</item>
+        <item>15:30:00</item>
+        <item>16:00:00</item>
+        <item>16:30:00</item>
+        <item>17:00:00</item>
+    </string-array>
+
+    <string-array name="endtime">
+        <item>07:30:00</item>
+        <item>08:00:00</item>
+        <item>08:30:00</item>
+        <item>09:00:00</item>
+        <item>09:30:00</item>
+        <item>10:00:00</item>
+        <item>10:30:00</item>
+        <item>11:00:00</item>
+        <item>11:30:00</item>
+        <item>12:00:00</item>
+        <item>12:30:00</item>
+        <item>13:00:00</item>
+        <item>13:30:00</item>
+        <item>14:00:00</item>
+        <item>14:30:00</item>
+        <item>15:00:00</item>
+        <item>15:30:00</item>
+        <item>16:00:00</item>
+        <item>16:30:00</item>
+        <item>17:00:00</item>
+    </string-array>
+
+    <string-array name="lecturer"></string-array>
+</resources>

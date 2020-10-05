@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "141073583319",
+    "firebase_url": "https://studentsassistant-620ab.firebaseio.com",
+    "project_id": "studentsassistant-620ab",
+    "storage_bucket": "studentsassistant-620ab.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:141073583319:android:a37f49e22148ba6414f492",
+        "android_client_info": {
+          "package_name": "com.uc.studentsassistant_0706011910007"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "141073583319-f4ftlec8mairhqsjq020q0u80ckgpth2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.uc.studentsassistant_0706011910007",
+            "certificate_hash": "7190050bfe7b2be054454ad4752b79818ead2ee2"
+          }
+        },
+        {
+          "client_id": "141073583319-6auec5aufpoj3hu8dict5rue24ambs63.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCaxRb9SFXynv1vFdjRq2xODP2P6yZJupk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "141073583319-6auec5aufpoj3hu8dict5rue24ambs63.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
