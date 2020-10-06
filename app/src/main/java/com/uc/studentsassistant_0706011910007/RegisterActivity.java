@@ -123,7 +123,7 @@ public class RegisterActivity extends AppCompatActivity implements TextWatcher {
             toolbar.setNavigationOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(RegisterActivity.this, StudentAdapter.class);
+                    Intent intent = new Intent(RegisterActivity.this, StudentData.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(RegisterActivity.this);
                     startActivity(intent, options.toBundle());
