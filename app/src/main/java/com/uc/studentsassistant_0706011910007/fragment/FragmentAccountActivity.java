@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,6 +16,12 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.uc.studentsassistant_0706011910007.Glovar;
 import com.uc.studentsassistant_0706011910007.LoginActivity;
 import com.uc.studentsassistant_0706011910007.R;
 import com.uc.studentsassistant_0706011910007.model.Student;
@@ -24,6 +31,8 @@ public class FragmentAccountActivity extends Fragment {
     Button button_logout;
     String name, nim, email, gender, age, address;
     Student student;
+    DatabaseReference dbReference;
+    Dialog dialog;
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
 
@@ -40,6 +49,7 @@ public class FragmentAccountActivity extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        dialog = Glovar.loadingDialog(getActivity());
         mAuth = FirebaseAuth.getInstance();
         account_name = view.findViewById(R.id.account_name);
         account_nim = view.findViewById(R.id.account_nim);
@@ -50,13 +60,25 @@ public class FragmentAccountActivity extends Fragment {
 
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
+        dbReference = FirebaseDatabase.getInstance().getReference("student").child(mUser.getUid());
 
-        account_name.setText(mUser.getEmail());
-//        account_nim.setText(student.getNim());
-//        account_email.setText(student.getEmail());
-//        account_gender.setText(student.getNim());
-//        account_age.setText(student.getNim());
-//        account_address.setText(student.getNim());
+        dbReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                student = snapshot.getValue(Student.class);
+                account_name.setText(student.getName());
+                account_nim.setText(student.getNim());
+                account_email.setText(student.getEmail());
+                account_gender.setText(student.getGender());
+                account_age.setText(student.getAge());
+                account_address.setText(student.getAddress());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         button_logout = view.findViewById(R.id.button_logout);
         button_logout.setOnClickListener(new View.OnClickListener() {

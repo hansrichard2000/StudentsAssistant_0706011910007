@@ -14,29 +14,38 @@ import com.google.firebase.auth.FirebaseUser;
 public class SplashScreen extends AppCompatActivity {
     private static int splashtime = 2000;
     private FirebaseAuth mAuth;
+    private FirebaseUser mUser;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_screen);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(SplashScreen.this, StarterActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        }, splashtime);
+        mAuth = FirebaseAuth.getInstance();
     }
 
-//    public void onStart() {
-//        super.onStart();
-//        // Check if user is signed in (non-null) and update UI accordingly.
-//        FirebaseUser currentUser = mAuth.getCurrentUser();
-//        updateUI(currentUser);
-//    }
+    @Override
+    protected void onStart() {
+        super.onStart();
 
-    private void updateUI(FirebaseUser currentUser) {
-
+        mUser = mAuth.getCurrentUser();
+        if (mUser!=null){
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Intent intent = new Intent(SplashScreen.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            }, splashtime);
+        }else {
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Intent intent = new Intent(SplashScreen.this, StarterActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            }, splashtime);
+        }
     }
 }

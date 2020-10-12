@@ -18,6 +18,7 @@ public class AddCourseActivity extends AppCompatActivity implements AdapterView.
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_add_course);
         toolbar = findViewById(R.id.toolbar_course);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -30,7 +31,6 @@ public class AddCourseActivity extends AppCompatActivity implements AdapterView.
                 finish();
             }
         });
-        setContentView(R.layout.activity_add_course);
         Spinner spinner = findViewById(R.id.spinner_day);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.days, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

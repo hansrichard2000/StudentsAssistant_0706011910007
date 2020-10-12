@@ -1,5 +1,6 @@
 package com.uc.studentsassistant_0706011910007;
 
+import android.app.ActivityOptions;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -59,7 +60,10 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-                startActivity(intent);
+                intent.putExtra("action", "addfromlogin");
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(LoginActivity.this);
+                startActivity(intent, options.toBundle());
                 finish();
             }
         });

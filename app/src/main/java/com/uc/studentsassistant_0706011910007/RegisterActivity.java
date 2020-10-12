@@ -173,6 +173,31 @@ public class RegisterActivity extends AppCompatActivity implements TextWatcher {
                     });
                 }
             });
+        }else if(action.equalsIgnoreCase("addfromlogin")){
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(RegisterActivity.this);
+                    startActivity(intent, options.toBundle());
+                    finish();
+                }
+            });
+            textView.setText("Register");
+            btn_register.setText("Register Student");
+            btn_register.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    email = user_email.getEditText().getText().toString().trim();
+                    pass = user_pass.getEditText().getText().toString().trim();
+                    name = user_name.getEditText().getText().toString().trim();
+                    nim = user_nim.getEditText().getText().toString().trim();
+                    address = user_address.getEditText().getText().toString().trim();
+                    age = user_age.getEditText().getText().toString().trim();
+                    addStudent();
+                }
+            });
         }
     }
 
