@@ -39,7 +39,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity implements TextWatcher {
-    ImageButton button;
     Dialog dialog;
     RadioGroup rg_student;
     RadioButton radioButton;
