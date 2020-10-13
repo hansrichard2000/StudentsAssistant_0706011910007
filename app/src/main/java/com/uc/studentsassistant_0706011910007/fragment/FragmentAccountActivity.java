@@ -72,12 +72,14 @@ public class FragmentAccountActivity extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 student = snapshot.getValue(Student.class);
-                account_name.setText(student.getName());
-                account_nim.setText(student.getNim());
-                account_email.setText(student.getEmail());
-                account_gender.setText(student.getGender());
-                account_age.setText(student.getAge());
-                account_address.setText(student.getAddress());
+                if (student!=null){
+                    account_name.setText(student.getName());
+                    account_nim.setText(student.getNim());
+                    account_email.setText(student.getEmail());
+                    account_gender.setText(student.getGender());
+                    account_age.setText(student.getAge());
+                    account_address.setText(student.getAddress());
+                }
             }
 
             @Override
