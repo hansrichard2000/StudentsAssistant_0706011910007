@@ -20,6 +20,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.EmailAuthProvider;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -40,6 +47,8 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.CardView
     Student student;
     private Context context;
     private ArrayList<Student> listStudent;
+    private FirebaseAuth mAuth;
+    private FirebaseUser mUser;
 
     public StudentAdapter(Context context) {
         this.context = context;
@@ -86,6 +95,7 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.CardView
             @Override
             public void onClick(View view) {
                 view.startAnimation(klik);
+                mAuth = FirebaseAuth.getInstance();
                 new AlertDialog.Builder(context)
                         .setTitle("Konfirmasi")
                         .setIcon(R.drawable.ic_baseline_android_24)
@@ -99,11 +109,17 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.CardView
                                     @Override
                                     public void run() {
                                         dialog.cancel();
-                                        dbStudent.child(student.getUid()).removeValue(new DatabaseReference.CompletionListener() {
+                                        mAuth.signInWithEmailAndPassword(student.getEmail(), student.getPassword()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                             @Override
-                                            public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
-                                                Toast.makeText(context, "Delete success!", Toast.LENGTH_SHORT).show();
-                                                dialogInterface.cancel();
+                                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                                mAuth.getCurrentUser().delete();
+                                                dbStudent.child(student.getUid()).removeValue(new DatabaseReference.CompletionListener() {
+                                                    @Override
+                                                    public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
+                                                        Toast.makeText(context, "Delete success!", Toast.LENGTH_SHORT).show();
+                                                        dialogInterface.cancel();
+                                                    }
+                                                });
                                             }
                                         });
                                     }
