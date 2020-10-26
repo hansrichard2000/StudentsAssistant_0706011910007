@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/lecturer_list"
-        android:icon="@drawable/ic_baseline_menu_24"
+        android:icon="@drawable/ic_baseline_format_list_bulleted_24"
         android:title="Lecturer List"
         app:showAsAction="ifRoom" />
 </menu>

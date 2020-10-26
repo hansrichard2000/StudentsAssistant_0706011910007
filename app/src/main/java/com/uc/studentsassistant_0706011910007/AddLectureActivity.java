@@ -52,14 +52,7 @@ public class AddLectureActivity extends AppCompatActivity implements TextWatcher
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(AddLectureActivity.this, StarterActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+
         lecturer_name = findViewById(R.id.lecturer_name);
         lecturer_expert = findViewById(R.id.lecturer_expert);
         lecturer_name.getEditText().addTextChangedListener(this);
@@ -78,6 +71,14 @@ public class AddLectureActivity extends AppCompatActivity implements TextWatcher
         final Intent intent = getIntent();
         action = intent.getStringExtra("action");
         if (action.equals("add")){
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(AddLectureActivity.this, StarterActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            });
             textView.setText("Add");
             button.setText("Add Lecturer");
             button.setOnClickListener(new View.OnClickListener() {
@@ -92,6 +93,15 @@ public class AddLectureActivity extends AppCompatActivity implements TextWatcher
             textView.setText("Edit");
             button.setText("Edit Lecturer");
             lecturer = intent.getParcelableExtra("edit_data_lect");
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(AddLectureActivity.this, LecturerDetail.class);
+                    intent.putExtra("data_lecturer", lecturer);
+                    startActivity(intent);
+                    finish();
+                }
+            });
             lecturer_name.getEditText().setText(lecturer.getName());
             lecturer_expert.getEditText().setText(lecturer.getExpertise());
             if (lecturer.getGender().equalsIgnoreCase("male")){
