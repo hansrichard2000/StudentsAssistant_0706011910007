@@ -92,7 +92,6 @@ public class AddCourseActivity extends AppCompatActivity implements TextWatcher 
 
             }
         });
-        spinnerLecturer = findViewById(R.id.spinner_lecturer);
 
         final Intent intent = getIntent();
         action = intent.getStringExtra("action");
@@ -175,6 +174,7 @@ public class AddCourseActivity extends AppCompatActivity implements TextWatcher 
 
     }
 
+//    insert lecturer to spinner
     private void showSpinnerLecturer() {
         dbCourse.child("lecturer").addValueEventListener(new ValueEventListener() {
             @Override

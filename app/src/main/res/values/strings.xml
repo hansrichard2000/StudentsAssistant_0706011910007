@@ -24,6 +24,7 @@
     <string name="account">My Account</string>
     <string name="logout">Log Out</string>
     <string name="course_data">Course Data</string>
+    <string name="enroll">Enroll</string>
 
     <string-array name="days">
         <item>Monday</item>
