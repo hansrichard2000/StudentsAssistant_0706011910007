@@ -1,4 +1,4 @@
-package com.uc.studentsassistant_0706011910007;
+package com.uc.studentsassistant_0706011910007.fragment;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.uc.studentsassistant_0706011910007.R;
 import com.uc.studentsassistant_0706011910007.fragment.FragmentAccountActivity;
 import com.uc.studentsassistant_0706011910007.fragment.FragmentCourseActivity;
 import com.uc.studentsassistant_0706011910007.fragment.FragmentScheduleActivity;

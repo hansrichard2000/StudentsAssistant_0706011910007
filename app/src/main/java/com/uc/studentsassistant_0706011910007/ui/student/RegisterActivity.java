@@ -1,4 +1,4 @@
-package com.uc.studentsassistant_0706011910007;
+package com.uc.studentsassistant_0706011910007.ui.student;
 
 import android.app.ActivityOptions;
 import android.app.Dialog;
@@ -10,7 +10,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -32,7 +31,11 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.uc.studentsassistant_0706011910007.adapter.StudentAdapter;
+import com.uc.studentsassistant_0706011910007.Glovar;
+import com.uc.studentsassistant_0706011910007.ui.login.LoginActivity;
+import com.uc.studentsassistant_0706011910007.fragment.MainActivity;
+import com.uc.studentsassistant_0706011910007.R;
+import com.uc.studentsassistant_0706011910007.ui.starter.StarterActivity;
 import com.uc.studentsassistant_0706011910007.model.Student;
 
 import java.util.HashMap;

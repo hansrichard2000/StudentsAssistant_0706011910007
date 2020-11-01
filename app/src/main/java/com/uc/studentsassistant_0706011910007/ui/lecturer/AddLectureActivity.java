@@ -1,4 +1,4 @@
-package com.uc.studentsassistant_0706011910007;
+package com.uc.studentsassistant_0706011910007.ui.lecturer;
 
 import android.app.ActivityOptions;
 import android.app.Dialog;
@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -26,6 +25,9 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.uc.studentsassistant_0706011910007.Glovar;
+import com.uc.studentsassistant_0706011910007.R;
+import com.uc.studentsassistant_0706011910007.ui.starter.StarterActivity;
 import com.uc.studentsassistant_0706011910007.model.Lecturer;
 
 import java.util.HashMap;

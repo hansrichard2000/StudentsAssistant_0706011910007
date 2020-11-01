@@ -13,8 +13,8 @@
         <!-- <activity android:name=".fragment.FragmentAccountActivity"></activity> -->
         <!-- <activity android:name=".fragment.FragmentScheduleActivity" /> -->
         <!-- <activity android:name=".fragment.FragmentCourseActivity" /> -->
-        <activity android:name=".LecturerDetail" /> <!-- <activity android:name=".adapter.LecturerAdapter" /> -->
-        <activity android:name=".SplashScreen">
+        <activity android:name=".ui.lecturer.LecturerDetail" /> <!-- <activity android:name=".adapter.LecturerAdapter" /> -->
+        <activity android:name=".ui.starter.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,26 +22,26 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".StarterActivity"
-            android:parentActivityName=".SplashScreen" />
-        <activity android:name=".MainActivity" />
+            android:name=".ui.starter.StarterActivity"
+            android:parentActivityName=".ui.starter.SplashScreen" />
+        <activity android:name=".fragment.MainActivity" />
         <activity
-            android:name=".LoginActivity"
-            android:parentActivityName=".StarterActivity" />
-        <activity android:name=".AddLectureActivity" />
+            android:name=".ui.login.LoginActivity"
+            android:parentActivityName=".ui.starter.StarterActivity" />
+        <activity android:name=".ui.lecturer.AddLectureActivity" />
         <activity
-            android:name=".AddCourseActivity"
-            android:parentActivityName=".StarterActivity" />
+            android:name=".ui.course.AddCourseActivity"
+            android:parentActivityName=".ui.starter.StarterActivity" />
         <activity
-            android:name=".LecturerData"
-            android:parentActivityName=".AddLectureActivity" />
+            android:name=".ui.lecturer.LecturerData"
+            android:parentActivityName=".ui.lecturer.AddLectureActivity" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".ui.student.RegisterActivity"
             android:launchMode="singleTop" />
         <activity
-            android:name=".StudentData"
+            android:name=".ui.student.StudentData"
             android:launchMode="singleTop" />
-        <activity android:name=".CourseData" android:parentActivityName=".AddCourseActivity"/>
+        <activity android:name=".ui.course.CourseData" android:parentActivityName=".ui.course.AddCourseActivity"/>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

@@ -1,4 +1,4 @@
-package com.uc.studentsassistant_0706011910007;
+package com.uc.studentsassistant_0706011910007.ui.login;
 
 import android.app.ActivityOptions;
 import android.app.Dialog;
@@ -22,8 +22,12 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.uc.studentsassistant_0706011910007.fragment.FragmentAccountActivity;
+import com.uc.studentsassistant_0706011910007.Glovar;
+import com.uc.studentsassistant_0706011910007.R;
+import com.uc.studentsassistant_0706011910007.ui.starter.StarterActivity;
+import com.uc.studentsassistant_0706011910007.fragment.MainActivity;
 import com.uc.studentsassistant_0706011910007.model.Student;
+import com.uc.studentsassistant_0706011910007.ui.student.RegisterActivity;
 
 public class LoginActivity extends AppCompatActivity implements TextWatcher {
 

@@ -1,4 +1,4 @@
-package com.uc.studentsassistant_0706011910007;
+package com.uc.studentsassistant_0706011910007.ui.starter;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
@@ -10,6 +10,12 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+
+import com.uc.studentsassistant_0706011910007.R;
+import com.uc.studentsassistant_0706011910007.ui.course.AddCourseActivity;
+import com.uc.studentsassistant_0706011910007.ui.lecturer.AddLectureActivity;
+import com.uc.studentsassistant_0706011910007.ui.login.LoginActivity;
+import com.uc.studentsassistant_0706011910007.ui.student.RegisterActivity;
 
 public class StarterActivity extends AppCompatActivity {
     AlphaAnimation klik = new AlphaAnimation(1F, 0.6F);

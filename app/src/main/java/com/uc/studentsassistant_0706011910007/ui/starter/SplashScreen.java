@@ -1,15 +1,16 @@
-package com.uc.studentsassistant_0706011910007;
+package com.uc.studentsassistant_0706011910007.ui.starter;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.widget.ImageButton;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.uc.studentsassistant_0706011910007.R;
+import com.uc.studentsassistant_0706011910007.fragment.MainActivity;
 
 public class SplashScreen extends AppCompatActivity {
     private static int splashtime = 2000;

@@ -21,7 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.uc.studentsassistant_0706011910007.AddCourseActivity;
+import com.uc.studentsassistant_0706011910007.ui.course.AddCourseActivity;
 import com.uc.studentsassistant_0706011910007.Glovar;
 import com.uc.studentsassistant_0706011910007.R;
 import com.uc.studentsassistant_0706011910007.model.Course;

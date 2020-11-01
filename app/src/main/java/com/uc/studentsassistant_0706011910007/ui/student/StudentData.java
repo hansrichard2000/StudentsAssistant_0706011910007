@@ -1,4 +1,4 @@
-package com.uc.studentsassistant_0706011910007;
+package com.uc.studentsassistant_0706011910007.ui.student;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
@@ -20,8 +20,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.uc.studentsassistant_0706011910007.R;
 import com.uc.studentsassistant_0706011910007.adapter.StudentAdapter;
-import com.uc.studentsassistant_0706011910007.model.Lecturer;
 import com.uc.studentsassistant_0706011910007.model.Student;
 
 import java.util.ArrayList;

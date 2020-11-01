@@ -1,4 +1,4 @@
-package com.uc.studentsassistant_0706011910007;
+package com.uc.studentsassistant_0706011910007.ui.lecturer;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,6 +22,8 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.uc.studentsassistant_0706011910007.Glovar;
+import com.uc.studentsassistant_0706011910007.R;
 import com.uc.studentsassistant_0706011910007.model.Lecturer;
 
 import java.util.ArrayList;

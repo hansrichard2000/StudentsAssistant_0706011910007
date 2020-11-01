@@ -1,4 +1,4 @@
-package com.uc.studentsassistant_0706011910007;
+package com.uc.studentsassistant_0706011910007.ui.course;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,15 +13,15 @@ import android.view.View;
 import android.view.animation.AlphaAnimation;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.uc.studentsassistant_0706011910007.R;
+import com.uc.studentsassistant_0706011910007.ui.student.RegisterActivity;
 import com.uc.studentsassistant_0706011910007.adapter.CourseAdapter;
 import com.uc.studentsassistant_0706011910007.model.Course;
-import com.uc.studentsassistant_0706011910007.model.Student;
 
 import java.util.ArrayList;
 

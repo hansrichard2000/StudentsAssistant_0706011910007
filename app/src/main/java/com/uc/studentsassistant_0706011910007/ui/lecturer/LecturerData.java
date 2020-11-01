@@ -1,9 +1,8 @@
-package com.uc.studentsassistant_0706011910007;
+package com.uc.studentsassistant_0706011910007.ui.lecturer;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
@@ -20,6 +19,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.uc.studentsassistant_0706011910007.ItemClickSupport;
+import com.uc.studentsassistant_0706011910007.R;
 import com.uc.studentsassistant_0706011910007.adapter.LecturerAdapter;
 import com.uc.studentsassistant_0706011910007.model.Lecturer;
 

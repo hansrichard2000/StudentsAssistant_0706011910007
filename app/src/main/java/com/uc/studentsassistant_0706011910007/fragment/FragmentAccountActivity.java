@@ -3,7 +3,6 @@ package com.uc.studentsassistant_0706011910007.fragment;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.app.Dialog;
@@ -27,7 +26,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.uc.studentsassistant_0706011910007.Glovar;
-import com.uc.studentsassistant_0706011910007.LoginActivity;
+import com.uc.studentsassistant_0706011910007.ui.login.LoginActivity;
 import com.uc.studentsassistant_0706011910007.R;
 import com.uc.studentsassistant_0706011910007.model.Student;
 
