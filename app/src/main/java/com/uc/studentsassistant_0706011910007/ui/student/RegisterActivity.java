@@ -152,28 +152,7 @@ public class RegisterActivity extends AppCompatActivity implements TextWatcher {
             btn_register.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    dialog.show();
-                    name = user_name.getEditText().getText().toString().trim();
-                    nim = user_nim.getEditText().getText().toString().trim();
-                    address = user_address.getEditText().getText().toString().trim();
-                    age = user_age.getEditText().getText().toString().trim();
-                    Map<String,Object> params = new HashMap<>();
-                    params.put("name", name);
-                    params.put("nim", nim);
-                    params.put("gender", gender);
-                    params.put("address", address);
-                    params.put("age", age);
-                    getmDatabase.child("student").child(student.getUid()).updateChildren(params).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            dialog.cancel();
-                            Intent intent1 = new Intent(RegisterActivity.this, StudentData.class);
-                            intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(RegisterActivity.this);
-                            startActivity(intent1, options.toBundle());
-                            finish();
-                        }
-                    });
+                    updateStudent();
                 }
             });
         }else if(action.equalsIgnoreCase("addfromlogin")){
@@ -201,7 +180,93 @@ public class RegisterActivity extends AppCompatActivity implements TextWatcher {
                     addStudent();
                 }
             });
+        }else if (action.equalsIgnoreCase("editFromFragment")){
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(RegisterActivity.this);
+                    startActivity(intent, options.toBundle());
+                    finish();
+                }
+            });
+            user_age.getEditText().setText("");
+            textView.setText("Edit");
+            btn_register.setText("Edit Student");
+            student = intent.getParcelableExtra("edit_student_data");
+            user_name.getEditText().setText(student.getName());
+            user_pass.getEditText().setText(student.getPassword());
+            user_pass.getEditText().setEnabled(false);
+            user_email.getEditText().setText(student.getEmail());
+            user_email.getEditText().setEnabled(false);
+            user_nim.getEditText().setText(student.getNim());
+            user_address.getEditText().setText(student.getAddress());
+            user_age.getEditText().setText(student.getAge());
+            if (student.getGender().equalsIgnoreCase("male")){
+                rg_student.check(R.id.male_gender);
+            }else{
+                rg_student.check(R.id.female_gender);
+            }
+            btn_register.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    updateStudentfromEditAccount();
+                }
+            });
         }
+    }
+
+    private void updateStudentfromEditAccount() {
+        dialog.show();
+        name = user_name.getEditText().getText().toString().trim();
+        nim = user_nim.getEditText().getText().toString().trim();
+        address = user_address.getEditText().getText().toString().trim();
+        age = user_age.getEditText().getText().toString().trim();
+        Map<String,Object> params = new HashMap<>();
+        params.put("name", name);
+        params.put("nim", nim);
+        params.put("gender", gender);
+        params.put("address", address);
+        params.put("age", age);
+        getmDatabase.child("student").child(student.getUid()).updateChildren(params).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                dialog.cancel();
+                Intent intent1 = new Intent(RegisterActivity.this, MainActivity.class);
+                Toast.makeText(RegisterActivity.this, "Student Edited Succesfully", Toast.LENGTH_SHORT).show();
+                intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(RegisterActivity.this);
+                startActivity(intent1, options.toBundle());
+                finish();
+            }
+        });
+    }
+
+    private void updateStudent() {
+        dialog.show();
+        name = user_name.getEditText().getText().toString().trim();
+        nim = user_nim.getEditText().getText().toString().trim();
+        address = user_address.getEditText().getText().toString().trim();
+        age = user_age.getEditText().getText().toString().trim();
+        Map<String,Object> params = new HashMap<>();
+        params.put("name", name);
+        params.put("nim", nim);
+        params.put("gender", gender);
+        params.put("address", address);
+        params.put("age", age);
+        getmDatabase.child("student").child(student.getUid()).updateChildren(params).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                dialog.cancel();
+                Intent intent1 = new Intent(RegisterActivity.this, StudentData.class);
+                Toast.makeText(RegisterActivity.this, "Student Edited Succesfully", Toast.LENGTH_SHORT).show();
+                intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(RegisterActivity.this);
+                startActivity(intent1, options.toBundle());
+                finish();
+            }
+        });
     }
 
     private void addStudent() {

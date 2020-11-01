@@ -29,11 +29,12 @@ import com.uc.studentsassistant_0706011910007.Glovar;
 import com.uc.studentsassistant_0706011910007.ui.login.LoginActivity;
 import com.uc.studentsassistant_0706011910007.R;
 import com.uc.studentsassistant_0706011910007.model.Student;
+import com.uc.studentsassistant_0706011910007.ui.student.RegisterActivity;
 
 public class FragmentAccountActivity extends Fragment {
     AlphaAnimation klik = new AlphaAnimation(1F, 0.6F);
     TextView account_name, account_nim, account_email, account_gender, account_age, account_address;
-    Button button_logout;
+    Button button_edit, button_logout;
     String name, nim, email, gender, age, address;
     Student student;
     DatabaseReference dbReference;
@@ -84,6 +85,17 @@ public class FragmentAccountActivity extends Fragment {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+        button_edit = view.findViewById(R.id.button_edit);
+        button_edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), RegisterActivity.class);
+                intent.putExtra("action", "editFromFragment");
+                intent.putExtra("edit_student_data", student);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
             }
         });
 
