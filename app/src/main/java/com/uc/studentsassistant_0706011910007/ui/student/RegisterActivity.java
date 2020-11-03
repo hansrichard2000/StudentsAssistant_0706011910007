@@ -355,7 +355,7 @@ public class RegisterActivity extends AppCompatActivity implements TextWatcher {
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+        Intent intent = new Intent(RegisterActivity.this, StarterActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(RegisterActivity.this);
         startActivity(intent, options.toBundle());

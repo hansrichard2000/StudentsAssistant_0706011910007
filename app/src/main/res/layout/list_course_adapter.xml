@@ -54,7 +54,7 @@
                     android:layout_marginStart="171dp"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/advent_pro_semibold"
-                    android:text="Nim : "
+                    android:text="Lecturer : "
                     android:textColor="@color/WhiteGrey"
                     android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="parent"

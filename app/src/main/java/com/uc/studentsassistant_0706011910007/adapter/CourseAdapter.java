@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,9 +19,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.uc.studentsassistant_0706011910007.model.Student;
 import com.uc.studentsassistant_0706011910007.ui.course.AddCourseActivity;
 import com.uc.studentsassistant_0706011910007.Glovar;
 import com.uc.studentsassistant_0706011910007.R;
@@ -31,7 +35,7 @@ import java.util.ArrayList;
 public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CardViewViewHolder>{
     AlphaAnimation klik = new AlphaAnimation(1F, 0.6F);
     Dialog dialog;
-    DatabaseReference dbCourse;
+    DatabaseReference dbCourse, dbStudent;
     private Context context;
     private ArrayList<Course> listCourse;
 
@@ -58,6 +62,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CardViewVi
     public void onBindViewHolder(@NonNull CardViewViewHolder holder, int position) {
         dialog = Glovar.loadingDialog(context);
         dbCourse = FirebaseDatabase.getInstance().getReference("course");
+        dbStudent = FirebaseDatabase.getInstance().getReference("student");
         final Course course = getListCourse().get(position);
         holder.name.setText(course.getSubject());
         holder.lecturer.setText(course.getLecturer());
@@ -92,6 +97,20 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CardViewVi
                                     @Override
                                     public void run() {
                                         dialog.cancel();
+                                        dbStudent.addListenerForSingleValueEvent(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                for (DataSnapshot childSnapshot : snapshot.getChildren()){
+                                                    final Student student = childSnapshot.getValue(Student.class);
+                                                    dbStudent.child(student.getUid()).child("course").child(course.getId()).removeValue();
+                                                }
+                                            }
+
+                                            @Override
+                                            public void onCancelled(@NonNull DatabaseError error) {
+
+                                            }
+                                        });
                                         dbCourse.child(course.getId()).removeValue(new DatabaseReference.CompletionListener() {
                                             @Override
                                             public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
@@ -99,6 +118,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CardViewVi
                                                 dialogInterface.cancel();
                                             }
                                         });
+
                                     }
                                 }, 2000);
                             }

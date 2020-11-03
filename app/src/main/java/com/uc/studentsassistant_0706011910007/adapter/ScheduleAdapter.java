@@ -1,5 +1,6 @@
 package com.uc.studentsassistant_0706011910007.adapter;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -113,6 +114,7 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.CardVi
     public class CardViewViewHolder extends RecyclerView.ViewHolder {
         TextView name, lecturer, day, start, end;
         Button delete;
+        @SuppressLint("ResourceAsColor")
         public CardViewViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.course_list_name);
@@ -123,6 +125,7 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.CardVi
             delete = itemView.findViewById(R.id.button_enroll);
             delete.setText("Remove");
             delete.setBackgroundResource(R.drawable.button_delete);
+            delete.setTextColor(R.color.colorWhite);
         }
     }
 }

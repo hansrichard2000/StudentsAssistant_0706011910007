@@ -32,6 +32,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.uc.studentsassistant_0706011910007.Glovar;
 import com.uc.studentsassistant_0706011910007.R;
+import com.uc.studentsassistant_0706011910007.model.Student;
 import com.uc.studentsassistant_0706011910007.ui.starter.StarterActivity;
 import com.uc.studentsassistant_0706011910007.model.Course;
 
@@ -48,7 +49,7 @@ public class AddCourseActivity extends AppCompatActivity implements TextWatcher 
     TextInputLayout course_subject;
     String subject, day, start, end, lecturer, action;
     Course course;
-    private DatabaseReference dbCourse;
+    private DatabaseReference dbCourse, dbStudent;
     FirebaseDatabase dbLecturer;
     ArrayAdapter<CharSequence> adapterEnd;
     Button button;
@@ -59,6 +60,7 @@ public class AddCourseActivity extends AppCompatActivity implements TextWatcher 
         setContentView(R.layout.activity_add_course);
         dialog = Glovar.loadingDialog(AddCourseActivity.this);
         dbCourse = FirebaseDatabase.getInstance().getReference();
+        dbStudent = FirebaseDatabase.getInstance().getReference("student");
         toolbar = findViewById(R.id.toolbar_course);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -152,12 +154,26 @@ public class AddCourseActivity extends AppCompatActivity implements TextWatcher 
                     start = spinnerStart.getSelectedItem().toString();
                     end = spinnerEnd.getSelectedItem().toString();
                     lecturer = spinnerLecturer.getSelectedItem().toString();
-                    Map<String, Object> params = new HashMap<>();
+                    final Map<String, Object> params = new HashMap<>();
                     params.put("subject", subject);
                     params.put("day", day);
                     params.put("start", start);
                     params.put("end", end);
                     params.put("lecturer", lecturer);
+                    dbStudent.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            for (DataSnapshot childSnapshot : snapshot.getChildren()){
+                                final Student student = childSnapshot.getValue(Student.class);
+                                dbStudent.child(student.getUid()).child("course").child(course.getId()).updateChildren(params);
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     dbCourse.child("course").child(course.getId()).updateChildren(params).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
