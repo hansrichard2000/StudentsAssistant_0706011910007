@@ -56,7 +56,7 @@
                     android:fontFamily="@font/advent_pro_semibold"
                     android:text="Lecturer : "
                     android:textColor="@color/WhiteGrey"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/course_name" />
 
@@ -69,7 +69,7 @@
                     android:fontFamily="@font/advent_pro_semibold"
                     android:text="TextView"
                     android:textColor="@color/WhiteGrey"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     app:layout_constraintStart_toEndOf="@+id/textView271"
                     app:layout_constraintTop_toBottomOf="@+id/course_name" />
             </androidx.constraintlayout.widget.ConstraintLayout>
