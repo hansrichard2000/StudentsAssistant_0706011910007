@@ -112,11 +112,11 @@ public class ListCourseAdapter extends RecyclerView.Adapter<ListCourseAdapter.Ca
                             Log.d("CourseEnd",courseEnd+"");
 
                             if (course.getDay().equalsIgnoreCase(course1.getDay())){
-                                if (courseStartChoice>courseStart && courseStartChoice<courseEnd){
+                                if (courseStartChoice>=courseStart && courseStartChoice<courseEnd){
                                     conflict = true;
                                     break;
                                 }
-                                if (courseEndChoice>courseStart && courseEndChoice<courseEnd){
+                                if (courseEndChoice>courseStart && courseEndChoice<=courseEnd){
                                     conflict = true;
                                     break;
                                 }
