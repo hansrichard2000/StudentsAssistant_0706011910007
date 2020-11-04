@@ -99,7 +99,6 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher {
                     Toast.makeText(LoginActivity.this, "Sign in Succesfull", Toast.LENGTH_SHORT).show();
                     mUser = mAuth.getCurrentUser();
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-//                    intent.putExtra("data_student", mUser);
                     startActivity(intent);
                     finish();
 
